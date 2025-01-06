@@ -2,8 +2,7 @@ import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
-import { SemesterRegistrationService } from './semesterRegistration.services';
-
+import { SemesterRegistrationService } from './semesterRegistration.service';
 
 const createSemesterRegistration = catchAsync(
   async (req: Request, res: Response) => {
@@ -32,7 +31,8 @@ const getAllSemesterRegistrations = catchAsync(
       statusCode: httpStatus.OK,
       success: true,
       message: 'Semester Registration is retrieved successfully !',
-      data: result,
+      meta: result.meta,
+      data: result.result,
     });
   },
 );
